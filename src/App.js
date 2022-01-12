@@ -3,25 +3,27 @@ import { TodoCounter } from "./TodoCounter";
 import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
-import { CreateTodoButtom } from "./CreateTodoButtom";
+import { CreateTodoButton } from "./CreateTodoButton";
 //import './App.css';
-const todos=[
-  {text:'Cortar cebolla', completed:false},
-  {text:'Tormar el curso de intro a react', completed:false},
-  {text:'Llorar con la llorona', completed:false}
+const todos = [
+  { text: "Cortar cebolla", completed: true },
+  { text: "Tormar el curso de intro a react", completed: false },
+  { text: "Llorar con la llorona", completed: false },
 ];
 function App() {
   return (
     // para evitar un div innecesario
     // Una manera más común de utilizar un fragment en react es con las llaves vacías <></>
-   <React.Fragment> 
-      <TodoCounter />    
+    <React.Fragment>
+      <TodoCounter />
       <TodoSearch />
       <TodoList>
-        {todos.map(todo =>(<TodoItem key={todo.text} text={todo.text} />))}
+        {todos.map((todo) => (
+          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+        ))}
       </TodoList>
-      <CreateTodoButtom />      
-   </React.Fragment>
+      <CreateTodoButton />
+    </React.Fragment>
   );
 }
 
