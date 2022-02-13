@@ -1,5 +1,5 @@
 import React from 'react';
-import './CreateTodoButton.css';
+import '../styles/components/CreateTodoButton.css';
 
 function CreateTodoButton(props) {
   return (
