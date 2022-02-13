@@ -63,9 +63,3 @@ function TodoProvider(props) {
 
 export {TodoContext, TodoProvider}
 
-{
-  /* <TodoContext.Provider></TodoContext.Provider> */
-}
-{
-  /* <TodoContext.Consumer></TodoContext.Consumer> */
-}

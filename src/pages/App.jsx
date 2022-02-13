@@ -5,8 +5,7 @@ import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import '../styles/pages/App.css';
-import { TodoProvider } from '../TodoContext'
-import { TodoContext } from '../TodoContext'
+import { TodoProvider, TodoContext } from '../TodoContext'
 
 
 
@@ -15,6 +14,14 @@ function App() {
   // React.useEffect(() => {
   //   // alert('use effect')
   // }, [totalTodos])
+
+  // const {
+  //   error,
+  //   loading,
+  //   searchedTodos,
+  //   completeTodo,
+  //   deleteTodo,
+  // } = React.useContext(TodoContext);
 
   return (
     // para evitar un div innecesario
@@ -34,12 +41,13 @@ function App() {
             deleteTodo
           }) => (
             <>
-              <TodoCounter total={totalTodos} completed={completedTodos} />
-              <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+              {!loading && <TodoCounter />}
+              <TodoSearch />
               <TodoList>
                 {loading && <p>Cargando Todos</p>}
                 {error && <p>Hubo un error</p>}
-                {(!loading && !searchedTodos.length) && <p>Crea tu primer Todo</p>}
+                {(!loading && totalTodos.length < 1) && <p>Crea tu Primer Todo</p>}
+                {(!loading && searchedTodos.length < 1) && <p>No Hay Coincidencias</p>}
                 {!loading && searchedTodos.map((todo) => (
                   <TodoItem
                     key={todo.text}
