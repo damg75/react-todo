@@ -40,7 +40,7 @@ function App() {
                 {loading && <p>Cargando Todos</p>}
                 {error && <p>Hubo un error</p>}
                 {(!loading && !searchedTodos.length) && <p>Crea tu primer Todo</p>}
-                {searchedTodos.map((todo) => (
+                {!loading && searchedTodos.map((todo) => (
                   <TodoItem
                     key={todo.text}
                     text={todo.text}
