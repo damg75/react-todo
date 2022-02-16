@@ -16,6 +16,8 @@ function TodoProvider(props) {
     error,
   } = useLocalStorage("TODOS_V1", defaultTodos);
 
+  const [openModal, setOpenModal] = React.useState(false)
+
   const [searchValue, setSearchValue] = React.useState("");
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -56,7 +58,9 @@ function TodoProvider(props) {
       setSearchValue,
       searchedTodos,
       toggleCompleteTodo,
-      deleteTodo
+      deleteTodo,
+      openModal,
+      setOpenModal
     }}>{props.children}</TodoContext.Provider>
   );
 }

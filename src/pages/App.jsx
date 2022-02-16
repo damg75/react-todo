@@ -6,6 +6,9 @@ import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import '../styles/pages/App.css';
 import { TodoProvider, TodoContext } from '../TodoContext'
+import { Modal } from "../components/Modal";
+import '../styles/components/Modal.css'
+
 
 
 
@@ -38,7 +41,9 @@ function App() {
             setSearchValue,
             searchedTodos,
             toggleCompleteTodo,
-            deleteTodo
+            deleteTodo,
+            openModal,
+            setOpenModal
           }) => (
             <>
               {!loading && <TodoCounter />}
@@ -58,10 +63,21 @@ function App() {
                   />
                 ))}
               </TodoList>
-              <CreateTodoButton />
+              {/* si es falso que es falso entonjces es true existe y es true */}
+              {!!openModal && (
+                <Modal>
+                  <p>{searchedTodos[0].text}</p>
+                </Modal>
+              )
+              }
+              <CreateTodoButton
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+              />
             </>
           )
           }
+
         </TodoContext.Consumer>
       </React.Fragment>
     </TodoProvider>

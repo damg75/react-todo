@@ -23,3 +23,7 @@
 .CreateTodoButton:hover {
   transform: rotate(224deg);
 }
+
+.CreateTodoButton {
+  z-index: 1;
+}
