@@ -8,6 +8,7 @@ import '../styles/pages/App.css';
 import { TodoProvider, TodoContext } from '../TodoContext'
 import { Modal } from "../components/Modal";
 import '../styles/components/Modal.css'
+import TodoForm from "../components/TodoForm";
 
 
 
@@ -43,7 +44,8 @@ function App() {
             toggleCompleteTodo,
             deleteTodo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
           }) => (
             <>
               {!loading && <TodoCounter />}
@@ -66,7 +68,7 @@ function App() {
               {/* si es falso que es falso entonjces es true existe y es true */}
               {!!openModal && (
                 <Modal>
-                  <p>{searchedTodos[0].text}</p>
+                  <TodoForm/>
                 </Modal>
               )
               }
